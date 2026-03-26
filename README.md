@@ -1,7 +1,4 @@
-# Prisma
-Ressource diagramme Prisma
-
-# Workflow PRISMA automatisé pour le screening bibliographique en maladies cardiovasculaires et intelligence artificielle
+# Workflow PRISMA semi-automatisé pour le screening bibliographique en maladies cardiovasculaires et intelligence artificielle
 
 ## Présentation
 
