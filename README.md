@@ -113,7 +113,7 @@ Dans ce processus, les références exportées depuis PubMed, ScienceDirect et S
 
 Au total, 1 789 références ont été identifiées à partir des bases principales, soit 1 187 depuis PubMed, 327 depuis ScienceDirect et 275 depuis Scopus. Après application d'un premier filtre documentaire sur les plateformes, 354 références ont été exportées pour traitement algorithmique.
 
-La fusion des références dans une base unique a permis d'identifier 2 doublons, réduisant le nombre d'enregistrements à 352. Les critères d'inclusion et d'exclusion ont ensuite conduit à l'exclusion de 288 références et au maintien de 64 articles issus des bases principales. À ce corpus ont été ajoutées 3 références provenant d'autres sources, aboutissant à un total final de 67 articles retenus pour la lecture intégrale.
+La fusion des références dans une base unique a permis d'identifier 2 doublons, réduisant le nombre d'enregistrements à 352. Les critères d'inclusion et d'exclusion ont ensuite conduit à l'exclusion de 288 références et au maintien de 57 articles issus des bases principales. À ce corpus ont été ajoutées 3 références provenant d'autres sources, aboutissant à un total final de 60 articles retenus pour la lecture intégrale.
 
 ## Structure du projet
 
