@@ -1,0 +1,77 @@
+PubMed:
+L selection a été faites de facon automatique en utilisant des programme python pour trier les doublons, enlevr certains articles qui sont pas lier au theme en examinant le titre ou le resume et le noter sur un echel de 1  a 5
+Requete: ("cardiovascular diseases"[MeSH Terms] OR "heart disease"[Title/Abstract]) AND ("machine learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] OR "deep learning"[Title/Abstract]) AND ("humans"[MeSH Terms]) AND ("patient monitoring"[Title/Abstract] OR "follow-up"[Title/Abstract] OR "remote monitoring"[Title/Abstract] OR "self-management"[Title/Abstract]) AND ("2016/01/01"[Date - Publication] : "2026/12/31"[Date - Publication])
+
+Resultat premiere recherche: 1187
+
+Après tri: comme les 
+
+Systematic Review, Review, 10 deenieres annees,
+
+69, 
+
+les 69 ont été exporter et traiter dans un programme python pour generer un fichier excel organiser, a travers ce fichier j'ai traité et ce meme fichier generer apres organisation  a été recuperer et utiliser dans un autres programmes ou on a ajouter lesarticles provenant de science diect qui sont traiter manuellement pour ajouter a fin de supprimer les doublons, ensuite tous les articles associer PubMed et science direct on été  a nouveau traiter a fin de trier en utilisant des critères d'inclusion et d'exclusion comme :CARDIO = [
+    "cardiovascular", "heart disease", "myocardial", "stroke", "hypertension",
+    "atherosclerosis", "cardiac", "heart failure", "arrhythmia", "ischemia",
+    "coronary artery", "cvd", "blood pressure", "cholesterol", "lipid",
+    "vascular", "angioplasty", "heart attack"
+]
+
+AI = [
+    "machine learning", "deep learning", "neural", "cnn", "rnn", "transformer",
+    "classification", "predict", "regression", "model", "algorithm",
+    "svm", "random forest", "xgboost", "bayesian", "data mining",
+    "decision support", "decision system", "predictive model", "risk prediction",
+    "ensemble", "feature selection"
+]
+
+MONITORING = ["monitoring", "telemedicine", "wearable", "sensor", "smartwatch", "remote"]
+
+ANIMAL = ["mouse", "mice", "rat", "murine", "zebrafish", "primate model"], on été nettoyer puis noter de 1 a 5 avec puis certains noter a 3 sont lu par titre et resume  dautres retenu et d'autres refuser toutes notes au dessus de 3 est inclus, toutes notes en decu de 3 est rejeter
+
+
+
+Science Direct: Le traitement est fais de facon manuele en triant sur la plateforme 10 articles ont ét" retenu au final et toutes apres inclusion dans le fichier excel ont été retenu apres verification des doubons et critères d'inclusion et exclusion. 
+Requete: ("cardiovascular disease" OR "heart disease") AND ("machine learning" OR "artificial intelligence" OR "deep learning") AND ("patient follow-up") AND ("risk prediction" OR "clinical decision")
+
+Resultat premiere recherche: 327
+
+Après tri: 10 dernieres années, review articles, research articles,Titre,
+
+
+Resultat: 10 retnu science direct
+
+
+
+
+
+dans l'ensemble 20 inclus, 20 peut etre a verifier. Au finis 27 ont été retenu 24 de PubMed et sciences direct et 3 d'autres sources
+
+
+
+
+
+
+Pour Scopus: 
+Requete: TITLE-ABS-KEY ( "cardiovascular disease" OR "heart disease" ) AND TITLE-ABS-KEY ( "machine learning" OR "deep learning" OR "artificial intelligence" ) AND TITLE-ABS-KEY ( "remote monitoring" OR "patient monitoring" OR telemedicine ) AND TITLE-ABS-KEY ( human OR humans OR patient ) AND PUBYEAR > 2015 AND ( LIMIT-TO ( DOCTYPE,"ar" ) ) AND ( LIMIT-TO ( SUBJAREA,"MEDI" ) OR LIMIT-TO ( SUBJAREA,"COMP" ) OR LIMIT-TO ( SUBJAREA,"ENGI" ) ) AND ( LIMIT-TO ( LANGUAGE,"English" ) OR LIMIT-TO ( LANGUAGE,"French" ) )
+
+
+resultat: 275
+
+
+
+
+Parsed records:
+  PubMed: 69
+  Scopus: 275
+  ScienceDirect: 10
+  Total: 354
+
+
+Counts:
+Decision
+Exclude    239
+Include     64
+Maybe       49
+
+total: 352 les 2 dupliquer enlever
