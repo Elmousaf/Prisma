@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PRISMA Flow Diagram - English Premium</title>
+    <style>
+        :root {
+            --id-color: #1a237e;
+            --scr-color: #1565c0;
+            --eli-color: #ef6c00;
+            --inc-color: #4a148c;
+            --soft-bg: #f8fafc;
+            --text-dark: #1e293b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            margin: 0;
+        }
+
+        .diagram-canvas {
+            background: white;
+            width: 850px;
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #cbd5e1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 3px double var(--id-color);
+        }
+
+        .header h1 {
+            color: var(--id-color);
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .header p { color: #64748b; margin: 2px 0; font-size: 11px; font-weight: 600; }
+
+        .row { display: flex; align-items: stretch; margin-bottom: 0px; }
+
+        .phase-sidebar {
+            width: 40px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-align: center;
+            color: white;
+            font-weight: 800;
+            font-size: 10px;
+            border-radius: 8px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .content-wrap { flex-grow: 1; display: grid; grid-template-columns: 2.2fr 1fr; gap: 12px; align-items: center; }
+
+        .box {
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .box-title { display: block; font-weight: 700; font-size: 10px; color: #475569; margin-bottom: 6px; text-transform: uppercase; border-left: 3px solid currentColor; padding-left: 8px; }
+
+        .number-large { font-size: 24px; font-weight: 800; color: var(--text-dark); }
+
+        .icon { font-style: normal; margin-right: 6px; font-size: 14px; vertical-align: middle; }
+
+        .db-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center; }
+        .db-item { padding: 6px; border-radius: 8px; background: var(--soft-bg); border: 1px solid #e2e8f0; }
+        .db-name { font-size: 10px; font-weight: 700; display: block; margin-bottom: 2px; }
+
+        .side-result { 
+            background: #f1f5f9; 
+            text-align: center; 
+            padding: 10px; 
+            border-radius: 12px; 
+            border: 1px dashed #94a3b8;
+        }
+
+        .criteria-box { border: 2px solid var(--eli-color); background: #fffaf5; }
+        .criteria-flex { display: flex; gap: 15px; font-size: 10.5px; line-height: 1.35; }
+        
+        .exclusion-col { flex: 1.2; color: #991b1b; border-right: 1px solid #fed7aa; padding-right: 12px; }
+        .inclusion-col { flex: 1; color: #166534; }
+
+        ul { padding-left: 12px; margin: 4px 0; list-style-type: '→ '; }
+        li { margin-bottom: 3px; }
+
+        .inclusion-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1.2fr; gap: 8px; align-items: center; }
+        .inc-sub-box { border: 2px solid var(--inc-color); border-radius: 10px; padding: 8px; text-align: center; background: white; font-size: 11px; }
+
+        .final-corpus-box { 
+            background: linear-gradient(135deg, var(--inc-color), #6b21a8); 
+            color: white; 
+            padding: 12px; 
+            border-radius: 12px; 
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-row { display: flex; justify-content: center; margin: 2px 0; }
+        .arrow-v { color: #cbd5e1; font-size: 18px; font-weight: bold; }
+
+        .footer-note { text-align: center; margin-top: 8px; font-size: 10px; color: #64748b; font-weight: 500; }
+        
+        center b { font-size: 12px; color: var(--eli-color); text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="diagram-canvas">
+    <div class="header">
+        <h1>PRISMA Flow Diagram</h1>
+        <p>Selection process for Systematic Review</p>
+    </div>
+
+    <div class="row">
+        <div class="phase-sidebar" style="background: var(--id-color)">IDENTIFICATION</div>
+        <div class="content-wrap">
+            <div class="box" style="border-color: var(--id-color)">
+                <span class="box-title"><i class="icon">🔍</i>Database Literature Search</span>
+                <div class="db-grid">
+                    <div class="db-item"><span class="db-name" style="color:#1a237e">🗄️ PubMed</span><span class="number-large">192</span></div>
+                    <div class="db-item"><span class="db-name" style="color:#e65100">🗄️ Scopus</span><span class="number-large">749</span></div>
+                    <div class="db-item"><span class="db-name" style="color:#2e7d32">➕ Other sources</span><span class="number-large">3</span></div>
+                </div>
+            </div>
+            <div class="side-result">
+                <span class="box-title">📄 Total Identified</span>
+                <span class="number-large" style="color: var(--id-color)">941</span>
+                <div style="font-size: 9px; font-weight: bold; color: #64748b;">(192 + 749 + 3)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-row"><div class="arrow-v">↓</div></div>
+
+    <div class="row">
+        <div class="phase-sidebar" style="background: var(--scr-color)">SCREENING</div>
+        <div class="content-wrap">
+            <div class="box" style="border-color: var(--scr-color)">
+                <span class="box-title"><i class="icon">🤖</i>Automated Processing</span>
+                <span class="number-large">123</span><br>
+                <span style="font-size: 11px; font-weight: 700; color: #ef4444;">DUPLICATES IDENTIFIED AND REMOVED</span>
+            </div>
+            <div class="side-result">
+                <span class="box-title">📑 Unique Records</span>
+                <span class="number-large" style="color: var(--scr-color)">818</span>
+                <div style="font-size: 9px; font-weight: bold; color: #64748b;">(941 - 123)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-row"><div class="arrow-v">↓</div></div>
+
+    <div class="row">
+        <div class="phase-sidebar" style="background: var(--eli-color)">ELIGIBILITY</div>
+        <div class="content-wrap" style="grid-template-columns: 1fr;">
+            <div class="box criteria-box">
+                <center><b> Inclusion and Exclusion Criteria Applied</b></center>
+                <div class="criteria-flex">
+                    <div class="exclusion-col">
+                        <strong>❌ EXCLUSION (n=730)</strong>
+                        <ul>
+                            <li><strong>61</strong> Animal studies</li>
+                            <li><strong>165</strong> Studies focusing only on IoT or Wearables</li>
+                            <li><strong>8</strong> Pediatric (children) studies</li>
+                            <li><strong>29</strong> Review articles and meta-analyses</li>
+                            <li><strong>467</strong> Missing combined domains (CVD + AI/ML/DL + Monitoring)</li>
+                        </ul>
+                    </div>
+                    <div class="inclusion-col">
+                        <strong>✅ INCLUSION</strong>
+                        <ul style="list-style-type: '✔ ';">
+                            <li><strong>Presence of combined keywords:</strong></li>
+                            <li>(Cardiovascular / Heart disease) + (ML / DL / AI)</li>
+                            <li>Patient monitoring / Remote / Early monitoring</li>
+                            <li>(Prediction / Risk)</li>
+                            <li>Articles from last 10 years</li>
+                            <li>Language: English</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-row"><div class="arrow-v">↓</div></div>
+
+    <div class="row">
+        <div class="phase-sidebar" style="background: #64748b">SCREENING</div>
+        <div class="content-wrap" style="grid-template-columns: 1fr;">
+            <div class="box" style="text-align: center; border-color: #64748b; background: #f8fafc; padding: 8px;">
+                <span class="box-title">📖 Selection for full-text reading</span>
+                <span class="number-large">88</span> <small style="font-weight: 800;">ARTICLES RETAINED</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-row"><div class="arrow-v">↓</div></div>
+
+    <div class="row">
+        <div class="phase-sidebar" style="background: var(--inc-color)">INCLUDED</div>
+        <div class="content-wrap inclusion-grid" style="grid-template-columns: 1fr auto 1fr auto 1.2fr;">
+            <div class="inc-sub-box">
+                <strong>📝 Relevance assessment:</strong><br>
+                <span class="number-large" style="color:var(--inc-color)">39</span><br>articles
+            </div>
+            <div style="font-size: 20px; font-weight: bold; color: var(--inc-color);">+</div>
+            <div class="inc-sub-box">
+                <strong>📂 Other sources:</strong><br>
+                <span class="number-large" style="color:var(--inc-color)">3</span><br>articles
+            </div>
+            <div style="font-size: 20px; font-weight: bold; color: var(--inc-color);">=</div>
+            <div class="final-corpus-box">
+                <span class="box-title" style="color: white; border-left-color: white;">🏆 FINAL CORPUS</span>
+                <span class="number-large" style="color: white; font-size: 32px;">42</span>
+                <div style="font-size: 10px; font-weight: 600;">STUDIES INCLUDED</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        A total of 42 studies were included according to the rigorous PRISMA methodology.
+    </div>
+</div>
+
+</body>
+</html>
