@@ -1,216 +1,354 @@
-# Workflow PRISMA semi-automatisé pour le screening bibliographique en maladies cardiovasculaires et intelligence artificielle
+Workflow PRISMA semi-automatisé pour la sélection d’articles sur la prédiction des maladies cardiovasculaires
+Présentation
+
+Ce dépôt contient les scripts Python, les fichiers de données et les ressources méthodologiques utilisés pour construire un workflow semi-automatisé inspiré du cadre PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses).
 
-## Présentation
+L’objectif principal est d’aider à identifier, organiser, dédupliquer, scorer et présélectionner des études scientifiques portant sur :
+
+les maladies cardiovasculaires ;
+la prédiction des maladies cardiaques ;
+l’intelligence artificielle (IA) ;
+le machine learning (ML) ;
+le deep learning (DL) ;
+le suivi des patients (patient monitoring) ;
+le monitoring à distance (remote monitoring) ;
+la stratification du risque cardiovasculaire.
 
-Ce dépôt contient les scripts Python et les fichiers de travail utilisés pour soutenir un processus de sélection bibliographique inspiré des recommandations PRISMA. Le projet a été conçu pour organiser, fusionner, dédupliquer et présélectionner des articles scientifiques portant sur les maladies cardiovasculaires, l'intelligence artificielle, le machine learning, le deep learning et le suivi des patients.
+Le workflow combine des traitements automatisés avec une validation scientifique manuelle. Les scripts accélèrent les premières étapes du screening bibliographique, mais les décisions finales d’inclusion restent réalisées par le chercheur.
 
-Le workflow combine une phase de filtrage initial directement sur les plateformes bibliographiques, une phase de structuration des références dans un fichier commun, une détection automatique des doublons, puis une présélection thématique fondée sur des critères d'inclusion et d'exclusion. L'objectif est de fournir une base reproductible et traçable pour la lecture intégrale finale des études retenues.
+Objectif du projet
 
-## Objectif du dépôt
+Ce projet vise à fournir un workflow reproductible et transparent pour le screening bibliographique dans le cadre d’une revue systématique portant sur la prédiction des maladies cardiovasculaires à l’aide de méthodes d’intelligence artificielle.
 
-Ce projet a pour finalité de documenter et d'outiller une démarche méthodologique de screening bibliographique. Il permet notamment :
+Le workflow permet notamment de :
 
-- d'importer des références issues de PubMed, ScienceDirect et Scopus ;
-- de fusionner les enregistrements dans une base unique ;
-- de détecter les doublons à partir des DOI, des PMID et des titres ;
-- d'appliquer une présélection automatisée à partir de mots-clés thématiques ;
-- de conserver les articles pertinents dans un fichier final dédié à la revue manuelle.
+importer les références exportées depuis PubMed et Scopus ;
+fusionner les références dans une base de screening unique ;
+détecter automatiquement les doublons à partir des DOI, PMID et titres ;
+appliquer un score de pertinence basé sur des mots-clés ;
+exclure automatiquement certains articles selon des critères prédéfinis ;
+générer des fichiers Excel exploitables pour la vérification manuelle ;
+améliorer la traçabilité et la reproductibilité du processus PRISMA.
+Cadre méthodologique PRISMA
 
-Ce dépôt constitue un outil d'aide à la sélection, et non un substitut à l'évaluation scientifique réalisée par le chercheur.
+Le projet suit le cadre méthodologique PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses), largement utilisé dans les revues systématiques.
 
-## Sources documentaires
+Cette approche permet d’assurer :
 
-Les références bibliographiques ont été identifiées à partir des sources suivantes :
+la transparence ;
+la reproductibilité ;
+la rigueur méthodologique ;
+la traçabilité du processus de sélection ;
+la justification des articles inclus et exclus.
 
-- PubMed : 1 187 références initialement identifiées ;
-- ScienceDirect : 327 références initialement identifiées ;
-- Scopus : 275 références initialement identifiées ;
-- autres sources : 3 références complémentaires ajoutées secondairement.
+Le workflow couvre les principales étapes PRISMA :
 
-Après un premier filtrage réalisé directement sur les plateformes documentaires, 354 références ont été exportées pour traitement algorithmique :
+identification des études ;
+suppression des doublons ;
+screening automatisé ;
+scoring de pertinence ;
+réévaluation manuelle ;
+lecture intégrale ;
+inclusion finale.
+Sources de données
 
-- 69 références issues de PubMed ;
-- 10 références issues de ScienceDirect ;
-- 275 références issues de Scopus.
+Les références bibliographiques proviennent principalement de deux bases scientifiques majeures :
 
-## Stratégies de recherche
+Base de données	Références identifiées
+PubMed	192
+Scopus	749
 
-Les recherches ont été conduites à partir de requêtes ciblant les maladies cardiovasculaires, les approches d'intelligence artificielle et le suivi des patients.
+Des références supplémentaires ont également été ajoutées depuis d’autres sources :
 
-### PubMed
+Autres sources	Nombre
+Références complémentaires	3
 
-La recherche PubMed a été réalisée à l'aide de la requête suivante :
+Nombre total de références identifiées avant déduplication :
 
-```text
-("cardiovascular diseases"[MeSH Terms] OR "heart disease"[Title/Abstract]) AND ("machine learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] OR "deep learning"[Title/Abstract]) AND ("humans"[MeSH Terms]) AND ("patient monitoring"[Title/Abstract] OR "follow-up"[Title/Abstract] OR "remote monitoring"[Title/Abstract] OR "self-management"[Title/Abstract]) AND ("2016/01/01"[Date - Publication] : "2026/12/31"[Date - Publication])
-```
+941 références
+Stratégie de recherche
 
-La sélection des références PubMed a ensuite été appuyée par les scripts Python du projet, utilisés pour structurer les données, détecter les doublons, évaluer la pertinence thématique à partir du titre et, lorsque disponible, du résumé, puis attribuer un score sur une échelle allant jusqu'à 5.
+Les requêtes de recherche ciblaient les études combinant :
 
-### ScienceDirect
+les maladies cardiovasculaires ;
+le machine learning ou l’intelligence artificielle ;
+la prédiction du risque ou le pronostic ;
+le patient monitoring ou le télémonitoring ;
+des publications entre 2016 et 2026 ;
+des articles en anglais.
+Requêtes de recherche
+Requête PubMed
+("Cardiovascular Diseases"[MeSH] OR "cardiovascular disease"[Title/Abstract] OR "heart disease"[Title/Abstract] OR "arrhythmia"[Title/Abstract])
+AND ("machine learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] OR "deep learning"[Title/Abstract])
+AND ("risk"[Title/Abstract] OR "prediction"[Title/Abstract] OR "prognosis"[Title/Abstract] OR "early detection"[Title/Abstract] OR "risk stratification"[Title/Abstract])
+AND ("patient monitoring"[Title/Abstract] OR "remote monitoring"[Title/Abstract] OR "continuous monitoring"[Title/Abstract] OR "real-time monitoring"[Title/Abstract] OR "telemonitoring"[Title/Abstract] OR "ambulatory monitoring"[Title/Abstract])
+AND ("2016/01/01"[Date - Publication] : "2026/04/30"[Date - Publication])
+AND (English[Language])
+Requête Scopus
+TITLE-ABS-KEY ( "cardiovascular disease" OR "heart disease" OR "arrhythmia" )
+AND TITLE-ABS-KEY ( "machine learning" OR "artificial intelligence" OR "deep learning" )
+AND TITLE-ABS-KEY ( "risk" OR "prediction" OR "prognosis" OR "early detection" OR "risk stratification" )
+AND TITLE-ABS-KEY ( "patient monitoring" OR "remote monitoring" OR "continuous monitoring" OR "real-time monitoring" OR "telemonitoring" OR "ambulatory monitoring")
+AND PUBYEAR > 2015
+AND PUBYEAR < 2027
+AND ( LIMIT-TO ( LANGUAGE, "English" ))
+Processus de sélection des études
 
-La recherche ScienceDirect a été conduite à l'aide de la requête suivante :
+Au total :
 
-```text
-("cardiovascular disease" OR "heart disease") AND ("machine learning" OR "artificial intelligence" OR "deep learning") AND ("patient follow-up") AND ("risk prediction" OR "clinical decision")
-```
+941 articles
 
-Pour ScienceDirect, le traitement initial a été réalisé manuellement sur la plateforme. Dix articles ont été retenus après application des filtres documentaires, puis ajoutés au fichier Excel commun afin d'être soumis au même processus de vérification automatique des doublons et d'évaluation par critères que les autres références.
+ont été exportés depuis PubMed et Scopus.
 
-### Scopus
+Les références ont ensuite été fusionnées dans une base unique puis traitées à l’aide de scripts Python automatisés permettant :
 
-La recherche Scopus a été réalisée à l'aide de la requête suivante :
+la détection des doublons ;
+la présélection thématique ;
+le scoring de pertinence ;
+les décisions préliminaires d’inclusion ou d’exclusion.
+Détection des doublons
 
-```text
-TITLE-ABS-KEY ( "cardiovascular disease" OR "heart disease" ) AND TITLE-ABS-KEY ( "machine learning" OR "deep learning" OR "artificial intelligence" ) AND TITLE-ABS-KEY ( "remote monitoring" OR "patient monitoring" OR telemedicine ) AND TITLE-ABS-KEY ( human OR humans OR patient ) AND PUBYEAR > 2015 AND ( LIMIT-TO ( DOCTYPE,"ar" ) ) AND ( LIMIT-TO ( SUBJAREA,"MEDI" ) OR LIMIT-TO ( SUBJAREA,"COMP" ) OR LIMIT-TO ( SUBJAREA,"ENGI" ) ) AND ( LIMIT-TO ( LANGUAGE,"English" ) OR LIMIT-TO ( LANGUAGE,"French" ) )
-```
+Le processus automatique de déduplication a permis d’identifier :
 
-Les références Scopus exportées après filtrage sur la plateforme ont ensuite été intégrées au même pipeline de traitement que les références issues de PubMed et de ScienceDirect.
+123 doublons
 
-## Critères de sélection
+La détection des doublons repose sur :
 
-### Critères d'inclusion
+la comparaison des DOI ;
+la comparaison des PMID ;
+la comparaison des titres normalisés.
 
-Les références étaient considérées comme potentiellement éligibles lorsqu'elles répondaient à un ou plusieurs des critères suivants :
+Après suppression des doublons :
 
-- publication au cours des dix dernières années ;
-- publication en français ou en anglais ;
-- étude menée dans un cadre scientifique ;
-- population humaine adulte ;
-- présence de mots-clés ou de contenus liés aux maladies cardiovasculaires ;
-- présence de mots-clés ou de contenus liés à l'intelligence artificielle, au machine learning ou au deep learning ;
-- pertinence pour le suivi, le monitoring, la prédiction ou l'aide à la décision en santé cardiovasculaire.
+818 références uniques
 
-### Critères d'exclusion
+sont restées pour le screening.
 
-Les références pouvaient être exclues dans les cas suivants :
+Critères d’exclusion
 
-- étude animale ou préclinique ;
-- population pédiatrique ou enfant ;
-- publication hors du cadre scientifique retenu ;
-- article antérieur à 2016 ;
-- absence de mots-clés pertinents en lien avec les maladies cardiovasculaires, l'intelligence artificielle, le machine learning ou le deep learning ;
-- absence de pertinence thématique dans le titre ou le résumé.
+Les critères d’exclusion suivants ont été appliqués :
 
-## Workflow méthodologique
+Critère d’exclusion	Nombre exclu
+Études animales	61
+Études centrées uniquement sur l’IoT ou les wearables	165
+Études pédiatriques	8
+Revues et méta-analyses	29
+Études hors des domaines combinés	467
+Publications antérieures à 2016	0
+Articles non anglophones	0
 
-Le workflow général du projet suit les étapes suivantes :
+Nombre total d’articles exclus :
 
-1. filtrage initial des résultats directement sur PubMed, ScienceDirect et Scopus ;
-2. exportation des références retenues après ce premier tri ;
-3. parsing et structuration des références dans un fichier Excel commun ;
-4. fusion des références issues des différentes bases de données ;
-5. détection automatique des doublons ;
-6. application de critères d'inclusion et d'exclusion ;
-7. attribution d'un score de pertinence aux articles ;
-8. conservation des articles maintenus dans un fichier final ;
-9. ajout secondaire de 3 références provenant d'autres sources ;
-10. constitution du corpus final destiné à la lecture intégrale.
+730 articles
+Critères d’inclusion
 
-Dans ce processus, les références exportées depuis PubMed, ScienceDirect et Scopus sont intégrées dans la même base de travail. Les articles retenus après filtrage sur plateforme sont donc maintenus dans un pipeline commun jusqu'à la vérification automatique des doublons, puis jusqu'à la présélection finale fondée sur le score de pertinence.
+Les études étaient considérées comme pertinentes lorsqu’elles combinaient :
 
-## Résumé PRISMA
+une problématique cardiovasculaire ;
+des approches IA / ML / DL ;
+du monitoring patient ;
+de la prédiction ou de l’évaluation du risque ;
+une publication récente ;
+une publication en anglais.
 
-Au total, 1 789 références ont été identifiées à partir des bases principales, soit 1 187 depuis PubMed, 327 depuis ScienceDirect et 275 depuis Scopus. Après application d'un premier filtre documentaire sur les plateformes, 354 références ont été exportées pour traitement algorithmique.
+Exemple de combinaison pertinente :
 
-La fusion des références dans une base unique a permis d'identifier 2 doublons, réduisant le nombre d'enregistrements à 352. Les critères d'inclusion et d'exclusion ont ensuite conduit à l'exclusion de 288 références et au maintien de 57 articles issus des bases principales. À ce corpus ont été ajoutées 3 références provenant d'autres sources, aboutissant à un total final de 60 articles retenus pour la lecture intégrale.
+risk + cardiovascular disease + machine learning + patient monitoring
+Système de scoring
 
-## Structure du projet
+Chaque article reçoit automatiquement un score de pertinence compris entre 1 et 5.
 
-### Scripts Python
+Critères utilisés
+Critère	Score
+Pertinence cardiovasculaire	+2
+Pertinence IA / ML / DL	+2
+Pertinence monitoring patient	+1
 
-- `Papers_Parsing.py`  
-  Importe et structure les références issues de plusieurs sources. Le script lit un export texte PubMed, un fichier CSV Scopus et un fichier Excel ScienceDirect, puis fusionne les données dans un fichier Excel unique de screening.
+Le score maximal est limité à :
 
-- `RechercheDuplicates.py`  
-  Normalise les DOI, les PMID et les titres afin de construire une clé de déduplication. Le script marque les doublons, regroupe les enregistrements concernés et génère un rapport détaillé.
+5
+Interprétation des scores
+Score	Décision
+Score ≥ 4	Inclusion pour lecture intégrale
+Score = 3	Vérification manuelle nécessaire
+Score < 3	Exclusion
+Résultats du screening
 
-- `CriteriaExclusion.py`  
-  Réalise une présélection automatisée à partir de listes de mots-clés associés au domaine cardiovasculaire, à l'intelligence artificielle, au monitoring et à la population humaine. Il attribue à chaque enregistrement une décision préliminaire, une justification et un score.
+Après application des critères d’exclusion et du scoring :
 
-- `ArticlesMaintenus.py`  
-  Sélectionne les articles conservés après scoring en filtrant les enregistrements dont le score est supérieur ou égal à 3. Il produit le fichier final contenant les articles maintenus pour analyse approfondie.
+Étape	Nombre
+Articles exclus	730
+Articles inclus automatiquement	62
+Articles classés “Maybe”	26
+Articles évalués en texte intégral	88
 
-### Fichiers de données et de sortie
+Après lecture intégrale :
 
-- `Pubmed1.txt`  
-  Export brut des références issues de PubMed.
+Résultat final	Nombre
+Articles retenus depuis PubMed et Scopus	39
+Articles ajoutés depuis d’autres sources	3
+Corpus final de la revue systématique	42
+Workflow général
 
-- `ScopusList.csv`  
-  Export tabulaire des références issues de Scopus.
+Le workflow suit les étapes suivantes :
 
-- `ScienceDirectListe.xlsx`  
-  Fichier contenant les références issues de ScienceDirect retenues après filtrage initial.
+recherche bibliographique dans PubMed et Scopus ;
+export des références ;
+fusion des références ;
+suppression automatique des doublons ;
+scoring thématique par mots-clés ;
+application des critères d’inclusion et d’exclusion ;
+vérification manuelle des articles incertains ;
+lecture intégrale ;
+inclusion finale des études retenues.
+Structure du projet
+Scripts principaux
+Papers_Parsing.py
 
-- `AffichageARticlesTotal.xlsx`  
-  Fichier Excel de screening contenant les références fusionnées et structurées.
+Ce script constitue la première étape du workflow.
 
-- `duplicates_report_by_doi.xlsx`  
-  Rapport de déduplication généré après normalisation des identifiants et des titres.
+Il :
 
-- `ExclusionCriteres_Final.xlsx`  
-  Fichier de sortie contenant la décision préliminaire, la raison du classement et le score attribué à chaque article.
+importe les fichiers exportés depuis PubMed et Scopus ;
+extrait les métadonnées principales ;
+fusionne les références dans un fichier unique de screening.
 
-- `Articles_Maintenus.xlsx`  
-  Fichier final regroupant les articles conservés après filtrage par score.
+Fichiers d’entrée :
 
-- `prisma.txt`  
-  Notes méthodologiques et éléments textuels liés au processus PRISMA.
+Pubmed1.txt
+Scopus.csv
 
-## Logique de scoring
+Fichier généré :
 
-La présélection automatisée repose sur des listes de mots-clés relatives :
+AffichageArticlesTotal.xlsx
+RechercheDuplicates.py
 
-- au domaine cardiovasculaire ;
-- aux méthodes d'intelligence artificielle, de machine learning et de deep learning ;
-- au monitoring, à la télémédecine et au suivi des patients ;
-- à la population humaine adulte.
+Ce script détecte et supprime les doublons.
 
-Les études animales sont exclues. Chaque article reçoit ensuite un score de pertinence. Les articles les plus pertinents sont classés comme inclus, les cas intermédiaires peuvent être conservés pour réévaluation, et les articles insuffisamment pertinents sont exclus. Le script final de maintien retient les articles ayant un score supérieur ou égal à 3.
+Méthodes utilisées :
 
-## Prérequis
+comparaison DOI ;
+comparaison PMID ;
+comparaison des titres normalisés.
 
-Environnement recommandé :
+Fichier généré :
 
-- Python 3.10 ou version ultérieure ;
-- `pandas` ;
-- `openpyxl`.
+Deduplicated_Final.xlsx
+CriteriaExclusion.py
 
-Installation des dépendances :
+Ce script applique :
 
-```bash
-pip install pandas openpyxl
-```
+les critères d’exclusion ;
+le scoring automatique ;
+les décisions préliminaires.
 
-## Utilisation
+Décisions possibles :
 
-Les scripts peuvent être exécutés dans l'ordre suivant :
+Include
+Maybe
+Exclude
 
-```bash
+Fichier généré :
+
+Filtered_Final_PRISMA_Strict.xlsx
+ArticlesMaintenus.py
+
+Ce script conserve les articles dont le score est supérieur ou égal à 3.
+
+Fichier généré :
+
+Articles_Maintenus.xlsx
+RetenusArticles.py
+
+Variante permettant de conserver uniquement les articles :
+
+Include
+Maybe
+
+Fichier généré :
+
+Articles_Retenus.xlsx
+Prisma.py
+
+Ce script génère automatiquement le diagramme PRISMA du workflow.
+
+Methodstatistics.py
+
+Produit des statistiques sur les méthodes IA les plus utilisées :
+
+Random Forest ;
+SVM ;
+CNN ;
+XGBoost ;
+LSTM ;
+ANN ;
+RNN ;
+etc.
+diagramme2.py
+
+Produit un graphique des bases de données les plus utilisées :
+
+Cleveland ;
+MIT-BIH ;
+Kaggle ;
+PhysioNet ;
+Framingham ;
+MIMIC-III ;
+UK Biobank.
+Ordre d’exécution recommandé
 python Papers_Parsing.py
 python RechercheDuplicates.py
 python CriteriaExclusion.py
 python ArticlesMaintenus.py
-```
 
-Selon l'organisation locale des fichiers, certains chemins ou noms de fichiers peuvent nécessiter une adaptation avant exécution.
+Visualisations :
 
-## Limites
+python Prisma.py
+python Methodstatistics.py
+python diagramme2.py
+Prérequis
 
-Ce workflow constitue un outil de soutien au screening et non un système autonome de sélection définitive. Les décisions finales doivent être validées par une lecture manuelle des titres, des résumés, puis des textes intégraux lorsque cela est nécessaire.
+Environnement recommandé :
 
-Le système de score repose sur des règles heuristiques et sur la présence de mots-clés. Il améliore l'efficacité du tri, mais ne remplace pas le jugement méthodologique du chercheur.
+Python 3.10 ou supérieur.
 
-## Reproductibilité
+Bibliothèques nécessaires :
 
-Ce dépôt vise à améliorer la traçabilité et la reproductibilité du processus de sélection bibliographique. Néanmoins, les résultats peuvent varier selon :
+pandas
+openpyxl
+matplotlib
+numpy
+pillow
+requests
 
-- la date d'interrogation des bases de données ;
-- les filtres appliqués sur les plateformes ;
-- le format des exports bibliographiques ;
-- les arbitrages effectués lors de la validation manuelle ;
-- l'évolution du contenu des bases documentaires.
+Installation :
 
-## Citation
+pip install pandas openpyxl matplotlib numpy pillow requests
+Limites
 
-Si vous utilisez ou adaptez ce workflow dans un cadre académique ou scientifique, merci de citer le travail de recherche associé ou de mentionner explicitement ce dépôt.
+Ce workflow constitue un outil d’aide au screening bibliographique et ne remplace pas l’évaluation scientifique manuelle.
+
+Le scoring repose sur :
+
+des règles heuristiques ;
+des listes de mots-clés ;
+des critères automatiques.
+
+Les décisions finales doivent toujours être validées par :
+
+la lecture du titre ;
+la lecture du résumé ;
+la lecture intégrale des articles.
+Reproductibilité
+
+Le projet vise à améliorer :
+
+la transparence ;
+la traçabilité ;
+la reproductibilité du screening bibliographique.
+
+Chaque étape produit un fichier intermédiaire permettant de suivre l’évolution des références depuis l’import initial jusqu’à la sélection finale.
+
+Citation
+
+Si vous utilisez ou adaptez ce workflow dans un cadre académique ou scientifique, merci de citer le travail de recherche associé ou de mentionner explicitement ce dépôt GitHub.
