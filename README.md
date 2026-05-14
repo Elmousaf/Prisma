@@ -1,90 +1,90 @@
-Workflow PRISMA semi-automatisé pour la sélection d’articles sur la prédiction des maladies cardiovasculaires
-Présentation
+Semi-Automated PRISMA Workflow for Cardiovascular Disease Prediction Literature Screening
+Overview
 
-Ce dépôt contient les scripts Python, les fichiers de données et les ressources méthodologiques utilisés pour construire un workflow semi-automatisé inspiré du cadre PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses).
+This repository contains the Python scripts, datasets, and methodological resources used to build a semi-automated workflow inspired by the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) framework.
 
-L’objectif principal est d’aider à identifier, organiser, dédupliquer, scorer et présélectionner des études scientifiques portant sur :
+The main objective is to assist in identifying, organizing, deduplicating, scoring, and preselecting scientific studies related to:
 
-les maladies cardiovasculaires ;
-la prédiction des maladies cardiaques ;
-l’intelligence artificielle (IA) ;
-le machine learning (ML) ;
-le deep learning (DL) ;
-le suivi des patients (patient monitoring) ;
-le monitoring à distance (remote monitoring) ;
-la stratification du risque cardiovasculaire.
+cardiovascular diseases;
+heart disease prediction;
+artificial intelligence (AI);
+machine learning (ML);
+deep learning (DL);
+patient monitoring;
+remote monitoring;
+cardiovascular risk stratification.
 
-Le workflow combine des traitements automatisés avec une validation scientifique manuelle. Les scripts accélèrent les premières étapes du screening bibliographique, mais les décisions finales d’inclusion restent réalisées par le chercheur.
+The workflow combines automated processing with manual scientific validation. The scripts accelerate the initial screening stages, while the final inclusion decisions remain under the responsibility of the researcher.
 
-Objectif du projet
+Project Objective
 
-Ce projet vise à fournir un workflow reproductible et transparent pour le screening bibliographique dans le cadre d’une revue systématique portant sur la prédiction des maladies cardiovasculaires à l’aide de méthodes d’intelligence artificielle.
+This project aims to provide a reproducible and transparent workflow for bibliographic screening within the context of a systematic review focused on cardiovascular disease prediction using artificial intelligence methods.
 
-Le workflow permet notamment de :
+The workflow enables researchers to:
 
-importer les références exportées depuis PubMed et Scopus ;
-fusionner les références dans une base de screening unique ;
-détecter automatiquement les doublons à partir des DOI, PMID et titres ;
-appliquer un score de pertinence basé sur des mots-clés ;
-exclure automatiquement certains articles selon des critères prédéfinis ;
-générer des fichiers Excel exploitables pour la vérification manuelle ;
-améliorer la traçabilité et la reproductibilité du processus PRISMA.
-Cadre méthodologique PRISMA
+import references exported from PubMed and Scopus;
+merge references into a unified screening database;
+automatically detect duplicates using DOI, PMID, and titles;
+apply a relevance score based on thematic keywords;
+automatically exclude certain studies according to predefined criteria;
+generate Excel files for manual verification and full-text review;
+improve transparency and reproducibility of the PRISMA process.
+PRISMA Methodological Framework
 
-Le projet suit le cadre méthodologique PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses), largement utilisé dans les revues systématiques.
+The project follows the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) methodological framework, which is widely adopted in systematic reviews.
 
-Cette approche permet d’assurer :
+This approach ensures:
 
-la transparence ;
-la reproductibilité ;
-la rigueur méthodologique ;
-la traçabilité du processus de sélection ;
-la justification des articles inclus et exclus.
+transparency;
+reproducibility;
+methodological rigor;
+traceability of the selection process;
+justification of included and excluded studies.
 
-Le workflow couvre les principales étapes PRISMA :
+The workflow covers the main PRISMA stages:
 
-identification des études ;
-suppression des doublons ;
-screening automatisé ;
-scoring de pertinence ;
-réévaluation manuelle ;
-lecture intégrale ;
-inclusion finale.
-Sources de données
+study identification;
+duplicate removal;
+automated screening;
+relevance scoring;
+manual reassessment;
+full-text review;
+final inclusion.
+Data Sources
 
-Les références bibliographiques proviennent principalement de deux bases scientifiques majeures :
+The bibliographic references were collected primarily from two major scientific databases:
 
-Base de données	Références identifiées
+Database	Identified References
 PubMed	192
 Scopus	749
 
-Des références supplémentaires ont également été ajoutées depuis d’autres sources :
+Additional references were also included from other relevant sources:
 
-Autres sources	Nombre
-Références complémentaires	3
+Other Sources	Number
+Additional references	3
 
-Nombre total de références identifiées avant déduplication :
+Total number of identified records before deduplication:
 
-941 références
-Stratégie de recherche
+941 records
+Search Strategy
 
-Les requêtes de recherche ciblaient les études combinant :
+The search equations targeted studies combining:
 
-les maladies cardiovasculaires ;
-le machine learning ou l’intelligence artificielle ;
-la prédiction du risque ou le pronostic ;
-le patient monitoring ou le télémonitoring ;
-des publications entre 2016 et 2026 ;
-des articles en anglais.
-Requêtes de recherche
-Requête PubMed
+cardiovascular diseases;
+machine learning or artificial intelligence;
+risk prediction or prognosis;
+patient monitoring or telemonitoring;
+publications between 2016 and 2026;
+English-language articles.
+Search Queries
+PubMed Query
 ("Cardiovascular Diseases"[MeSH] OR "cardiovascular disease"[Title/Abstract] OR "heart disease"[Title/Abstract] OR "arrhythmia"[Title/Abstract])
 AND ("machine learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] OR "deep learning"[Title/Abstract])
 AND ("risk"[Title/Abstract] OR "prediction"[Title/Abstract] OR "prognosis"[Title/Abstract] OR "early detection"[Title/Abstract] OR "risk stratification"[Title/Abstract])
 AND ("patient monitoring"[Title/Abstract] OR "remote monitoring"[Title/Abstract] OR "continuous monitoring"[Title/Abstract] OR "real-time monitoring"[Title/Abstract] OR "telemonitoring"[Title/Abstract] OR "ambulatory monitoring"[Title/Abstract])
 AND ("2016/01/01"[Date - Publication] : "2026/04/30"[Date - Publication])
 AND (English[Language])
-Requête Scopus
+Scopus Query
 TITLE-ABS-KEY ( "cardiovascular disease" OR "heart disease" OR "arrhythmia" )
 AND TITLE-ABS-KEY ( "machine learning" OR "artificial intelligence" OR "deep learning" )
 AND TITLE-ABS-KEY ( "risk" OR "prediction" OR "prognosis" OR "early detection" OR "risk stratification" )
@@ -92,227 +92,227 @@ AND TITLE-ABS-KEY ( "patient monitoring" OR "remote monitoring" OR "continuous m
 AND PUBYEAR > 2015
 AND PUBYEAR < 2027
 AND ( LIMIT-TO ( LANGUAGE, "English" ))
-Processus de sélection des études
+Study Selection Process
 
-Au total :
+A total of:
 
 941 articles
 
-ont été exportés depuis PubMed et Scopus.
+were exported from PubMed and Scopus.
 
-Les références ont ensuite été fusionnées dans une base unique puis traitées à l’aide de scripts Python automatisés permettant :
+The references were merged into a single database and processed using automated Python scripts enabling:
 
-la détection des doublons ;
-la présélection thématique ;
-le scoring de pertinence ;
-les décisions préliminaires d’inclusion ou d’exclusion.
-Détection des doublons
+duplicate detection;
+thematic preselection;
+relevance scoring;
+preliminary inclusion and exclusion decisions.
+Duplicate Detection
 
-Le processus automatique de déduplication a permis d’identifier :
+The automated deduplication process identified:
 
-123 doublons
+123 duplicates
 
-La détection des doublons repose sur :
+Duplicate detection was based on:
 
-la comparaison des DOI ;
-la comparaison des PMID ;
-la comparaison des titres normalisés.
+DOI comparison;
+PMID comparison;
+normalized title comparison.
 
-Après suppression des doublons :
+After duplicate removal:
 
-818 références uniques
+818 unique records
 
-sont restées pour le screening.
+remained for screening.
 
-Critères d’exclusion
+Exclusion Criteria
 
-Les critères d’exclusion suivants ont été appliqués :
+The following exclusion criteria were applied:
 
-Critère d’exclusion	Nombre exclu
-Études animales	61
-Études centrées uniquement sur l’IoT ou les wearables	165
-Études pédiatriques	8
-Revues et méta-analyses	29
-Études hors des domaines combinés	467
-Publications antérieures à 2016	0
-Articles non anglophones	0
+Exclusion Criterion	Excluded Articles
+Animal studies	61
+Studies focused only on IoT or wearable devices	165
+Pediatric studies	8
+Reviews and meta-analyses	29
+Studies outside the combined domains	467
+Publications older than 10 years	0
+Non-English articles	0
 
-Nombre total d’articles exclus :
+Total excluded articles:
 
 730 articles
-Critères d’inclusion
+Inclusion Criteria
 
-Les études étaient considérées comme pertinentes lorsqu’elles combinaient :
+Studies were considered relevant when they combined:
 
-une problématique cardiovasculaire ;
-des approches IA / ML / DL ;
-du monitoring patient ;
-de la prédiction ou de l’évaluation du risque ;
-une publication récente ;
-une publication en anglais.
+a cardiovascular disease topic;
+AI / ML / DL approaches;
+patient monitoring concepts;
+prediction or risk assessment tasks;
+recent publication dates;
+English-language publication.
 
-Exemple de combinaison pertinente :
+Example of a relevant keyword combination:
 
 risk + cardiovascular disease + machine learning + patient monitoring
-Système de scoring
+Scoring System
 
-Chaque article reçoit automatiquement un score de pertinence compris entre 1 et 5.
+Each article automatically receives a relevance score ranging from 1 to 5.
 
-Critères utilisés
-Critère	Score
-Pertinence cardiovasculaire	+2
-Pertinence IA / ML / DL	+2
-Pertinence monitoring patient	+1
+Scoring Criteria
+Criterion	Score
+Cardiovascular relevance	+2
+AI / ML / DL relevance	+2
+Patient monitoring relevance	+1
 
-Le score maximal est limité à :
+Maximum score:
 
 5
-Interprétation des scores
-Score	Décision
-Score ≥ 4	Inclusion pour lecture intégrale
-Score = 3	Vérification manuelle nécessaire
-Score < 3	Exclusion
-Résultats du screening
+Score Interpretation
+Score	Decision
+Score ≥ 4	Included for full-text review
+Score = 3	Requires manual reassessment
+Score < 3	Excluded
+Screening Results
 
-Après application des critères d’exclusion et du scoring :
+After applying exclusion criteria and automated scoring:
 
-Étape	Nombre
-Articles exclus	730
-Articles inclus automatiquement	62
-Articles classés “Maybe”	26
-Articles évalués en texte intégral	88
+Step	Number
+Excluded articles	730
+Automatically included articles	62
+“Maybe” articles	26
+Full-text assessed articles	88
 
-Après lecture intégrale :
+After full-text review:
 
-Résultat final	Nombre
-Articles retenus depuis PubMed et Scopus	39
-Articles ajoutés depuis d’autres sources	3
-Corpus final de la revue systématique	42
-Workflow général
+Final Result	Number
+Articles retained from PubMed and Scopus	39
+Additional articles from other sources	3
+Final systematic review corpus	42
+General Workflow
 
-Le workflow suit les étapes suivantes :
+The workflow follows these steps:
 
-recherche bibliographique dans PubMed et Scopus ;
-export des références ;
-fusion des références ;
-suppression automatique des doublons ;
-scoring thématique par mots-clés ;
-application des critères d’inclusion et d’exclusion ;
-vérification manuelle des articles incertains ;
-lecture intégrale ;
-inclusion finale des études retenues.
-Structure du projet
-Scripts principaux
+bibliographic search in PubMed and Scopus;
+export of references;
+reference merging;
+automatic duplicate removal;
+keyword-based thematic scoring;
+application of inclusion and exclusion criteria;
+manual verification of uncertain articles;
+full-text reading;
+final inclusion of retained studies.
+Project Structure
+Main Scripts
 Papers_Parsing.py
 
-Ce script constitue la première étape du workflow.
+This script represents the first stage of the workflow.
 
-Il :
+It:
 
-importe les fichiers exportés depuis PubMed et Scopus ;
-extrait les métadonnées principales ;
-fusionne les références dans un fichier unique de screening.
+imports exported files from PubMed and Scopus;
+extracts the main metadata;
+merges all references into a unified screening file.
 
-Fichiers d’entrée :
+Input files:
 
 Pubmed1.txt
 Scopus.csv
 
-Fichier généré :
+Generated file:
 
 AffichageArticlesTotal.xlsx
 RechercheDuplicates.py
 
-Ce script détecte et supprime les doublons.
+This script detects and removes duplicate references.
 
-Méthodes utilisées :
+Methods used:
 
-comparaison DOI ;
-comparaison PMID ;
-comparaison des titres normalisés.
+DOI comparison;
+PMID comparison;
+normalized title comparison.
 
-Fichier généré :
+Generated file:
 
 Deduplicated_Final.xlsx
 CriteriaExclusion.py
 
-Ce script applique :
+This script applies:
 
-les critères d’exclusion ;
-le scoring automatique ;
-les décisions préliminaires.
+exclusion criteria;
+automated scoring;
+preliminary decisions.
 
-Décisions possibles :
+Possible decisions:
 
 Include
 Maybe
 Exclude
 
-Fichier généré :
+Generated file:
 
 Filtered_Final_PRISMA_Strict.xlsx
 ArticlesMaintenus.py
 
-Ce script conserve les articles dont le score est supérieur ou égal à 3.
+This script retains articles with a score greater than or equal to 3.
 
-Fichier généré :
+Generated file:
 
 Articles_Maintenus.xlsx
 RetenusArticles.py
 
-Variante permettant de conserver uniquement les articles :
+Alternative filtering script retaining only articles classified as:
 
 Include
 Maybe
 
-Fichier généré :
+Generated file:
 
 Articles_Retenus.xlsx
 Prisma.py
 
-Ce script génère automatiquement le diagramme PRISMA du workflow.
+This script automatically generates the PRISMA flow diagram of the workflow.
 
 Methodstatistics.py
 
-Produit des statistiques sur les méthodes IA les plus utilisées :
+Produces statistics regarding the most frequently used AI methods, including:
 
-Random Forest ;
-SVM ;
-CNN ;
-XGBoost ;
-LSTM ;
-ANN ;
-RNN ;
+Random Forest;
+SVM;
+CNN;
+XGBoost;
+LSTM;
+ANN;
+RNN;
 etc.
 diagramme2.py
 
-Produit un graphique des bases de données les plus utilisées :
+Generates a graphical representation of the most commonly used datasets:
 
-Cleveland ;
-MIT-BIH ;
-Kaggle ;
-PhysioNet ;
-Framingham ;
-MIMIC-III ;
+Cleveland;
+MIT-BIH;
+Kaggle;
+PhysioNet;
+Framingham;
+MIMIC-III;
 UK Biobank.
-Ordre d’exécution recommandé
+Recommended Execution Order
 python Papers_Parsing.py
 python RechercheDuplicates.py
 python CriteriaExclusion.py
 python ArticlesMaintenus.py
 
-Visualisations :
+Visualization scripts:
 
 python Prisma.py
 python Methodstatistics.py
 python diagramme2.py
-Prérequis
+Requirements
 
-Environnement recommandé :
+Recommended environment:
 
-Python 3.10 ou supérieur.
+Python 3.10 or higher.
 
-Bibliothèques nécessaires :
+Required libraries:
 
 pandas
 openpyxl
@@ -321,34 +321,34 @@ numpy
 pillow
 requests
 
-Installation :
+Installation:
 
 pip install pandas openpyxl matplotlib numpy pillow requests
-Limites
+Limitations
 
-Ce workflow constitue un outil d’aide au screening bibliographique et ne remplace pas l’évaluation scientifique manuelle.
+This workflow is intended as a bibliographic screening support tool and does not replace manual scientific evaluation.
 
-Le scoring repose sur :
+The scoring system relies on:
 
-des règles heuristiques ;
-des listes de mots-clés ;
-des critères automatiques.
+heuristic rules;
+keyword lists;
+automated criteria.
 
-Les décisions finales doivent toujours être validées par :
+Final inclusion decisions must always be validated through:
 
-la lecture du titre ;
-la lecture du résumé ;
-la lecture intégrale des articles.
-Reproductibilité
+title reading;
+abstract reading;
+full-text review.
+Reproducibility
 
-Le projet vise à améliorer :
+The project aims to improve:
 
-la transparence ;
-la traçabilité ;
-la reproductibilité du screening bibliographique.
+transparency;
+traceability;
+reproducibility of bibliographic screening.
 
-Chaque étape produit un fichier intermédiaire permettant de suivre l’évolution des références depuis l’import initial jusqu’à la sélection finale.
+Each stage generates an intermediate file, allowing researchers to track the evolution of references from the initial import to the final selection.
 
 Citation
 
-Si vous utilisez ou adaptez ce workflow dans un cadre académique ou scientifique, merci de citer le travail de recherche associé ou de mentionner explicitement ce dépôt GitHub.
+If you use or adapt this workflow in an academic or scientific context, please cite the associated research work or explicitly mention this repository.
